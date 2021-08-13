@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      lang="en"
+      layout:decorate="~{layout/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Mesin</title>
+</head>
+<body>
+<div layout:fragment="content">
+            <div class="card-header">
+                <h4 class="card-title">Tambah Data Mesin</h4>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/addMesin}" th:object="${mesinObject}" id="mesinForm" method="post">
+                    <div class="row">
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label for="nama_mesin">Nama Mesin</label>
+                                <input type="text" th:field="*{nama_mesin}" id="nama_mesin" placeholder="Nama Mesin"
+                                       th:class="'form-control '+ ${#fields.hasErrors('nama_mesin') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('nama_mesin')}" th:errors="*{nama_mesin}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_departemen">Departemen</label>
+                                <select id="id_departemen" th:field="*{id_departemen}"
+                                        th:class="'form-control '+ ${#fields.hasErrors('id_departemen') ? 'is-invalid' : ''}">
+                                    <option value="">Pilih Departemen</option>
+                                    <option th:each="departemen : ${listDepartemen}" th:value="${departemen.id_departemen}" th:text="${departemen.nama_departemen}"></option>
+                                </select>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('id_departemen')}" th:errors="*{id_departemen}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="line">Line Produksi</label>
+                                <select id="line" th:field="*{line}"
+                                        th:class="'form-control '+ ${#fields.hasErrors('line') ? 'is-invalid' : ''}">
+                                    <option value="">Pilih Line Produksi</option>
+                                    <option th:each="line : ${listLineProduksi}" th:value="${line.id_line}" th:text="${line.nama_line}"></option>
+                                </select>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('line')}" th:errors="*{line}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tahun_mesin">Tahun Mesin</label>
+                                <input type="text" th:field="*{tahun_mesin}" id="tahun_mesin" placeholder="Tahun Mesin"
+                                       th:class="'form-control '+ ${#fields.hasErrors('tahun_mesin') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('tahun_mesin')}" th:errors="*{tahun_mesin}"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-info btn-fill pull-right">Simpan</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      lang="en"
+      layout:decorate="~{layout/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>departemen</title>
+</head>
+<body>
+<div layout:fragment="content">
+        <div class="card-header">
+            <h4 class="card-title">List Departemen</h4>
+        </div>
+        <div class="card-body">
+            <div th:if="${message}">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span th:text="${message}"></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+
+            <div th:switch="${listDepartemen}">
+                <a href="/viewadddepartementh" class="btn btn-primary btn-sm mb-3"><i class="fa fa-plus"></i> Tambah Data</a>
+                <h2 th:case="null">Belum ada data!</h2>
+                <div th:case="*">
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                        <tr>
+                            <td>ID Departemen</td>
+                            <td>Nama</td>
+                            <td>Aksi</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="departemen : ${listDepartemen}">
+                            <td th:text="${departemen.id_departemen}"></td>
+                            <td th:text="${departemen.nama_departemen}"></td>
+                            <td>
+                                <a th:href="@{/vieweditdepartementh/{id}(id=${departemen.id_departemen})}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Ubah</a>
+                                <a th:href="@{/deletedepartementh/{id}(id=${departemen.id_departemen})}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</div>
+</body>
+</html>

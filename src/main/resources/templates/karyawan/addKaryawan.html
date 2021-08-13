@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      lang="en"
+      layout:decorate="~{layout/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Karyawan</title>
+</head>
+<body>
+<div layout:fragment="content">
+            <div class="card-header">
+                <h4 class="card-title">Tambah Data Karyawan</h4>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/addKaryawan}" th:object="${karyawanObject}" id="karyawanForm" method="post">
+                    <div class="row">
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label for="NIK">NIK</label>
+                                <input type="text" th:field="*{NIK}" id="NIK" placeholder="NIK"
+                                       th:class="'form-control '+ ${#fields.hasErrors('NIK') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('NIK')}" th:errors="*{NIK}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="text" th:field="*{password}" id="password" placeholder="Password"
+                                       th:class="'form-control '+ ${#fields.hasErrors('password') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_departemen">Departemen</label>
+                                <select id="id_departemen" th:field="*{id_departemen}"
+                                        th:class="'form-control '+ ${#fields.hasErrors('id_departemen') ? 'is-invalid' : ''}">
+                                    <option value="">Pilih Departemen</option>
+                                    <option th:each="departemen : ${listDepartemen}" th:value="${departemen.id_departemen}" th:text="${departemen.nama_departemen}"></option>
+                                </select>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('id_departemen')}" th:errors="*{id_departemen}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nama_karyawan">Nama Karyawan</label>
+                                <input type="text" th:field="*{nama_karyawan}" id="nama_karyawan" placeholder="Nama Karyawan"
+                                       th:class="'form-control '+ ${#fields.hasErrors('nama_karyawan') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('nama_karyawan')}" th:errors="*{nama_karyawan}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" th:field="*{email}" id="email" placeholder="Email"
+                                       th:class="'form-control '+ ${#fields.hasErrors('email') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="alamat">Alamat</label>
+                                <input type="text" th:field="*{alamat}" id="alamat" placeholder="Alamat"
+                                       th:class="'form-control '+ ${#fields.hasErrors('alamat') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('alamat')}" th:errors="*{alamat}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telepon">Telepon</label>
+                                <input type="text" th:field="*{telepon}" id="telepon" placeholder="Telepon"
+                                       th:class="'form-control '+ ${#fields.hasErrors('telepon') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('telepon')}" th:errors="*{telepon}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <div id="Yes" >
+                                    <label for="foto">Photo Karyawan</label>
+                                    <input type="file" name="file" id="foto">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tanggal_lahir">Tanggal Lahir</label>
+                                <input type="date" th:field="*{tanggal_lahir}" id="tanggal_lahir" placeholder="Tanggal Lahir"
+                                       th:class="'form-control '+ ${#fields.hasErrors('tanggal_lahir') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('tanggal_lahir')}" th:errors="*{tanggal_lahir}"></div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="role">Role</label>
+                                <input type="text" th:field="*{role}" id="role" placeholder="Role"
+                                       th:class="'form-control '+ ${#fields.hasErrors('role') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-info btn-fill pull-right">Simpan</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+</div>
+</body>
+</html>

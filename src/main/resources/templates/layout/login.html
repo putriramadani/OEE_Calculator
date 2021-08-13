@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Login</title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="icon" href="/assets/img/icon.ico" type="image/x-icon"/>
+
+    <!-- Fonts and icons -->
+    <script src="/assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+        WebFont.load({
+            google: {"families":["Lato:300,400,700,900"]},
+            custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['/assets/css/fonts.min.css']},
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/atlantis-pro.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body class="login">
+<div class="wrapper wrapper-login wrapper-login-full p-0">
+    <div class="login-aside w-50 d-flex flex-column align-items-center justify-content-center text-center login-aside-left">
+        <h1 class="title fw-bold text-white mb-3">OEE Calculator</h1>
+        <p class="subtitle text-white op-7">Memudahkan untuk menghitung OEE</p>
+    </div>
+    <div class="login-aside w-50 d-flex align-items-center justify-content-center bg-white">
+        <div class="container container-login container-transparent animated fadeIn">
+            <h3 class="text-center">Masuk</h3>
+            <div id="errors" class="alert alert-danger" role="alert" th:if="${(param.error != null) and (param.error[0] == 'true')}">
+                Nama pengguna atau kata sandi salah!
+            </div>
+            <div class="login-form">
+                <form th:action="@{/}" method="post">
+                    <div class="form-group">
+                        <label for="email" class="placeholder"><b>Email</b></label>
+                        <input id="email" name="email" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="placeholder"><b>Kata Sandi</b></label>
+                        <div class="position-relative">
+                            <input id="password" name="password" type="password" class="form-control" required>
+                            <div class="show-password">
+                                <i class="icon-eye"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-action-d-flex mb-3">
+                        <button type="submit" class="btn btn-secondary w-100 mt-3 mt-sm-0 fw-bold">Masuk</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="/assets/js/core/popper.min.js"></script>
+<script src="/assets/js/core/bootstrap.min.js"></script>
+<script src="/assets/js/atlantis-pro.min.js"></script>
+<script>
+    setTimeout(function() {
+        $('.alert').slideUp();
+    }, 3000);
+</script>
+</body>
+</html>

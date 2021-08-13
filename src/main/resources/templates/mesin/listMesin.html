@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      lang="en"
+      layout:decorate="~{layout/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Mesin</title>
+</head>
+<body>
+<div layout:fragment="content">
+        <div class="card-header">
+            <h4 class="card-title">List Mesin</h4>
+        </div>
+        <div class="card-body">
+            <div th:if="${message}">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span th:text="${message}"></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+
+            <div th:switch="${listMesin}">
+                <a href="/viewaddMesin" class="btn btn-primary btn-sm mb-3"><i class="fa fa-plus"></i> Tambah Data</a>
+                <h2 th:case="null">Belum ada data!</h2>
+                <div th:case="*">
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                        <tr>
+                            <td>No</td>
+                            <td>No Mesin</td>
+                            <td>Nama Mesin</td>
+                            <td>Departemen</td>
+                            <td>Line Produksi</td>
+                            <td>Tahun Mesin</td>
+                            <td>Aksi</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="mesin, counter: ${listMesin}">
+                            <th th:text="${counter.count}"></th>
+                            <td th:text="${mesin.no_mesin}"></td>
+                            <td th:text="${mesin.nama_mesin}"></td>
+                            <td th:text="${mesin.getDepartemens()}"></td>
+                            <td th:text="${mesin.getLineProduksi()}"></td>
+                            <td th:text="${mesin.tahun_mesin}"></td>
+                            <td>
+                                <a th:href="@{/viewupdateMesin/{no_mesin}(no_mesin=${mesin.no_mesin})}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Ubah</a>
+                                <a th:href="@{/deleteMesin/{no_mesin}(no_mesin=${mesin.no_mesin})}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</div>
+</body>
+</html>
