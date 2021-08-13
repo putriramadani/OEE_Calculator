@@ -66,14 +66,6 @@
                                        th:class="'form-control '+ ${#fields.hasErrors('telepon') ? 'is-invalid' : ''}">
                                 <div class="invalid-feedback" th:if="${#fields.hasErrors('telepon')}" th:errors="*{telepon}"></div>
                             </div>
-
-                            <div class="form-group">
-                                <div id="Yes" >
-                                    <label for="foto">Photo Karyawan</label>
-                                    <input type="file" name="file" id="foto">
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <label for="tanggal_lahir">Tanggal Lahir</label>
                                 <input type="date" th:field="*{tanggal_lahir}" id="tanggal_lahir" placeholder="Tanggal Lahir"
