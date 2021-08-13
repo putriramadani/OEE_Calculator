@@ -40,8 +40,8 @@
                             <td th:text="${LineProduksi.nama_line}"></td>
                             <td th:text="${LineProduksi.deskripsi}"></td>
                             <td>
-                                <a th:href="@{/vieweditlineproduksith/{id}(id=${LineProduksi.id_line})}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Ubah</a>
-                                <a th:href="@{/deletelineproduksith/{id}(id=${LineProduksi.id_line})}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                <a th:href="@{/vieweditlineproduksith/{id}(id=${LineProduksi.id_line})}" class="btn btn-sm btn-warning" style="padding: 5px 10px;height: 20px;margin-top: 20px; margin-right: 2px;"><i class="fa fa-edit"></i> Ubah</a>
+                                <a th:href="@{/deletelineproduksith/{id}(id=${LineProduksi.id_line})}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger" style="padding: 5px 10px;height: 20px;margin-top: 20px;"><i class="fa fa-trash"></i> Hapus</a>
                             </td>
                         </tr>
                         </tbody>
