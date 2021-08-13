@@ -46,8 +46,8 @@
                             <td th:text="${mesin.getLineProduksi()}"></td>
                             <td th:text="${mesin.tahun_mesin}"></td>
                             <td>
-                                <a th:href="@{/viewupdateMesin/{no_mesin}(no_mesin=${mesin.no_mesin})}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Ubah</a>
-                                <a th:href="@{/deleteMesin/{no_mesin}(no_mesin=${mesin.no_mesin})}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                <a th:href="@{/viewupdateMesin/{no_mesin}(no_mesin=${mesin.no_mesin})}" class="btn btn-sm btn-warning" style="padding: 5px 10px;height: 20px;margin-top: 20px;margin-right: 2px;"><i class="fa fa-edit"></i> Ubah</a>
+                                <a th:href="@{/deleteMesin/{no_mesin}(no_mesin=${mesin.no_mesin})}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger" style="padding: 5px 10px;height: 20px;margin-top: 20px;"><i class="fa fa-trash"></i> Hapus</a>
                             </td>
                         </tr>
                         </tbody>

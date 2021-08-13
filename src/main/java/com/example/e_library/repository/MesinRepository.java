@@ -11,4 +11,7 @@ import java.util.List;
 public interface MesinRepository extends CrudRepository<Mesin, Integer> {
     @Query("SELECT a FROM Mesin a WHERE a.status = 1")
     List<Mesin> findMesinByStatus();
+
+    @Query(nativeQuery = true, value = "select count(no_mesin) from mesin")
+    int getTotalMesin();
 }

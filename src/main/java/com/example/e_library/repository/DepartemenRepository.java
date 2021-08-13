@@ -11,4 +11,7 @@ import java.util.List;
 public interface DepartemenRepository extends CrudRepository<departemen, Integer> {
     @Query("SELECT a FROM departemen a WHERE a.status = 1")
     List<departemen> findDepartemenByStatus();
+
+    @Query(nativeQuery = true, value = "select count(id_departemen) from departemen")
+    int getTotalDepartemen();
 }

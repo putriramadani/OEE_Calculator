@@ -16,4 +16,7 @@ public interface KaryawanRepository extends CrudRepository<Karyawan, Integer> {
 
     @Query("FROM Karyawan a where a.NIK=:NIK")
     Karyawan findKaryawanByNik (String NIK);
+
+    @Query(nativeQuery = true, value = "select count(NIK) from karyawan")
+    int getTotalKaryawan();
 }
