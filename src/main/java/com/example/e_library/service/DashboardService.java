@@ -19,6 +19,9 @@ public class DashboardService {
     @Autowired
     LineProduksiRepository lineProduksiRepository;
 
+    @Autowired
+    TransaksiRepository transaksiRepository;
+
     public int findTotalDepartemen() {
         return departemenRepository.getTotalDepartemen();
     }
@@ -34,4 +37,21 @@ public class DashboardService {
     public int findTotalLineProduksi() {
         return lineProduksiRepository.getTotalLineProduksi();
     }
+
+    public int findTotalTransaksi(){
+        return transaksiRepository.getTotalID();
+    }
+
+    public int findMaxOEE(){
+        return transaksiRepository.getMaxOEE();
+    }
+
+    public int findMinOEE(){
+        return transaksiRepository.getMinOEE();
+    }
+
+    public int findAvgOEE(){
+        return transaksiRepository.getAvgOEE();
+    }
+
 }

@@ -31,7 +31,13 @@ public class DashboardController {
     }
 
     @GetMapping("staff/dashboard")
-    public String getStaffDashboard() {
+    public String getStaffDashboard(Model model, HttpServletRequest request) {
+
+        model.addAttribute("total_transaksi", dashboardService.findTotalTransaksi());
+        model.addAttribute("max_transaksi", dashboardService.findMaxOEE());
+        model.addAttribute("min_transaksi", dashboardService.findMinOEE());
+        model.addAttribute("avg_transaksi", dashboardService.findAvgOEE());
+
         return "dashboard/dashboard-staff";
     }
 
