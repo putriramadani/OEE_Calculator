@@ -23,10 +23,38 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="text" th:field="*{password}" id="password" placeholder="Password"
-                                       th:class="'form-control '+ ${#fields.hasErrors('password') ? 'is-invalid' : ''}">
-                                <div class="invalid-feedback" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                                <label for="nama_karyawan">Nama Karyawan</label>
+                                <input type="text" th:field="*{nama_karyawan}" id="nama_karyawan" placeholder="Nama Karyawan"
+                                       th:class="'form-control '+ ${#fields.hasErrors('nama_karyawan') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('nama_karyawan')}" th:errors="*{nama_karyawan}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tanggal_lahir">Tanggal Lahir</label>
+                                <input type="date" th:field="*{tanggal_lahir}" id="tanggal_lahir" placeholder="Tanggal Lahir"
+                                       th:class="'form-control '+ ${#fields.hasErrors('tanggal_lahir') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('tanggal_lahir')}" th:errors="*{tanggal_lahir}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="alamat">Alamat</label>
+                                <input type="text" th:field="*{alamat}" id="alamat" placeholder="Alamat"
+                                       th:class="'form-control '+ ${#fields.hasErrors('alamat') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('alamat')}" th:errors="*{alamat}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" th:field="*{email}" id="email" placeholder="Email"
+                                       th:class="'form-control '+ ${#fields.hasErrors('email') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telepon">Telepon</label>
+                                <input type="text" th:field="*{telepon}" id="telepon" placeholder="Telepon"
+                                       th:class="'form-control '+ ${#fields.hasErrors('telepon') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('telepon')}" th:errors="*{telepon}"></div>
                             </div>
 
                             <div class="form-group">
@@ -40,46 +68,29 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="nama_karyawan">Nama Karyawan</label>
-                                <input type="text" th:field="*{nama_karyawan}" id="nama_karyawan" placeholder="Nama Karyawan"
-                                       th:class="'form-control '+ ${#fields.hasErrors('nama_karyawan') ? 'is-invalid' : ''}">
-                                <div class="invalid-feedback" th:if="${#fields.hasErrors('nama_karyawan')}" th:errors="*{nama_karyawan}"></div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="text" th:field="*{email}" id="email" placeholder="Email"
-                                       th:class="'form-control '+ ${#fields.hasErrors('email') ? 'is-invalid' : ''}">
-                                <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <input type="text" th:field="*{alamat}" id="alamat" placeholder="Alamat"
-                                       th:class="'form-control '+ ${#fields.hasErrors('alamat') ? 'is-invalid' : ''}">
-                                <div class="invalid-feedback" th:if="${#fields.hasErrors('alamat')}" th:errors="*{alamat}"></div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="telepon">Telepon</label>
-                                <input type="text" th:field="*{telepon}" id="telepon" placeholder="Telepon"
-                                       th:class="'form-control '+ ${#fields.hasErrors('telepon') ? 'is-invalid' : ''}">
-                                <div class="invalid-feedback" th:if="${#fields.hasErrors('telepon')}" th:errors="*{telepon}"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="tanggal_lahir">Tanggal Lahir</label>
-                                <input type="date" th:field="*{tanggal_lahir}" id="tanggal_lahir" placeholder="Tanggal Lahir"
-                                       th:class="'form-control '+ ${#fields.hasErrors('tanggal_lahir') ? 'is-invalid' : ''}">
-                                <div class="invalid-feedback" th:if="${#fields.hasErrors('tanggal_lahir')}" th:errors="*{tanggal_lahir}"></div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="role">Role</label>
-                                <input type="text" th:field="*{role}" id="role" placeholder="Role"
-                                       th:class="'form-control '+ ${#fields.hasErrors('role') ? 'is-invalid' : ''}">
+                                <label for="role">Role </label>
+                                <select id="role" th:field="*{role}"
+                                        th:class="'form-control '+ ${#fields.hasErrors('role') ? 'is-invalid' : ''}">
+                                    <option value="">Pilih Jabatan</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">Staff</option>
+                                </select>
                                 <div class="invalid-feedback" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="text" th:field="*{password}" id="password" placeholder="Password"
+                                       th:class="'form-control '+ ${#fields.hasErrors('password') ? 'is-invalid' : ''}">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="repassword">Konfirmasi Password</label>
+                                <input class="form-control" type="password" id="repassword" required>
+
+                            </div>
+
                         </div>
                     </div>
                     <div class="row">
@@ -96,4 +107,15 @@
             </div>
 </div>
 </body>
+<script type="text/javascript">
+    function Validate() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("repassword").value;
+        if (password != confirmPassword) {
+            alert("Password tidak sama.");
+            return false;
+        }
+        return true;
+    }
+</script>
 </html>

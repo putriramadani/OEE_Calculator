@@ -68,4 +68,23 @@ public class KaryawanService {
 
         return karyawan;
     }
+
+    public Optional<Karyawan> findByEmail(String email){
+        return karyawanRepository.findByEmail(email);
+    }
+
+    public int checkLogin(String email, String password){
+        Optional<Karyawan> optionalKaryawan = karyawanRepository.findByEmail(email);
+
+        if(optionalKaryawan.isPresent() && optionalKaryawan.get().getPassword().equals(password)
+                && optionalKaryawan.get().getRole() == 1 && optionalKaryawan.get().getStatus().equals(1)){
+            System.out.println(optionalKaryawan.get().getRole());
+            return 1;
+        } else if (optionalKaryawan.isPresent() && optionalKaryawan.get().getPassword().equals(password)
+                && optionalKaryawan.get().getRole() == 2 && optionalKaryawan.get().getStatus().equals(1)){
+            System.out.println(optionalKaryawan.get().getRole());
+            return 2;
+        }
+        return 0;
+    }
 }
