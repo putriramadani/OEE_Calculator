@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface KaryawanRepository extends CrudRepository<Karyawan, Integer> {
@@ -19,4 +20,7 @@ public interface KaryawanRepository extends CrudRepository<Karyawan, Integer> {
 
     @Query(nativeQuery = true, value = "select count(NIK) from karyawan")
     int getTotalKaryawan();
+
+    @Query("select p from Karyawan p where p.email= :email")
+    Optional<Karyawan> findByEmail(String email);
 }

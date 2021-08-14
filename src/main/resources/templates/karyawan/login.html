@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Login</title>
@@ -37,7 +37,7 @@
                 Nama pengguna atau kata sandi salah!
             </div>
             <div class="login-form">
-                <form th:action="@{/}" method="post">
+                <form th:action="@{/checklogin}" method="post">
                     <div class="form-group">
                         <label for="email" class="placeholder"><b>Email</b></label>
                         <input id="email" name="email" type="text" class="form-control" required>

@@ -33,14 +33,11 @@ public class Karyawan {
     @NotBlank(message = "Telepon wajib diisi.")
     private String telepon;
 
-    private String foto;
-
     @Column (name = "tanggal_lahir")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tanggal_lahir;
 
-    @NotBlank(message = "Role wajib diisi.")
-    private String role;
+    private Integer role;
 
     private Integer status;
     private String creaby;
@@ -112,14 +109,6 @@ public class Karyawan {
         this.telepon = telepon;
     }
 
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
-
     public Date getTanggal_lahir() {
         return tanggal_lahir;
     }
@@ -128,11 +117,11 @@ public class Karyawan {
         this.tanggal_lahir = tanggal_lahir;
     }
 
-    public String getRole() {
+    public Integer getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 
