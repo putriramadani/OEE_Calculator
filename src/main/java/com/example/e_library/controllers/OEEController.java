@@ -1,6 +1,7 @@
 package com.example.e_library.controllers;
 
 import com.example.e_library.model.Perhitungan_OEE;
+import com.example.e_library.repository.KaryawanRepository;
 import com.example.e_library.service.KaryawanService;
 import com.example.e_library.service.MesinService;
 import com.example.e_library.service.PerhitunganOEEService;
@@ -25,7 +26,7 @@ public class OEEController {
     MesinService mesinService;
 
     @Autowired
-    KaryawanService karyawanService;
+    KaryawanRepository karyawanRepository;
 
     @RequestMapping("/listOEE")
     public String getOEE (Model model){
@@ -49,11 +50,11 @@ public class OEEController {
 
 
 
-    @RequestMapping ("/viewaddOEE")
+    @RequestMapping ("viewaddOEE")
     public String viewAddOEE(Model model){
         model.addAttribute("OEEObject", new Perhitungan_OEE());
         model.addAttribute("listMesin", mesinService.getAllMesin());
-        model.addAttribute("listKaryawan", karyawanService.getAllKaryawan());
-        return "/OEE/addOEE";
+        model.addAttribute("listKaryawan", karyawanRepository.findKaryawanByStatus());
+        return "OEE/addOEE";
     }
 }

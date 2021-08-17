@@ -217,7 +217,11 @@ public class Perhitungan_OEE {
     public String getMesin(){
         return mesin.getNama_mesin();
     }
-    public String getOperator(){
+    public String getOperator1(){
         return karyawan.getNama_karyawan();
+    }
+
+    public String getOperator() {
+        return operator;
     }
 }
