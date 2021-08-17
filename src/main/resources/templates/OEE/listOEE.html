@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      lang="en"
+      layout:decorate="~{layout/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>oee</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="card-header">
+        <h4 class="card-title">List OEE</h4>
+    </div>
+    <div class="card-body">
+        <div th:if="${message}">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <span th:text="${message}"></span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+
+        <div th:switch="${listOEE}">
+            <a href="/viewaddOEE" class="btn btn-primary btn-sm mb-3"><i class="fa fa-plus"></i> Tambah Data</a>
+            <h2 th:case="null">Belum ada data!</h2>
+            <div th:case="*">
+                <table class="table table-striped table-bordered table-hover dataTables-example">
+                    <thead>
+                    <tr>
+                        <td>No</td>
+                        <td>Machine</td>
+                        <td>Performance</td>
+                        <td>Availibility</td>
+                        <td>Quality</td>
+                        <td>OEE</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="oee, counter: ${listOEE}">
+                        <th th:text="${counter.count}"></th>
+                        <td th:text="${oee.getMesin()}"></td>
+                        <td th:text="${oee.performance}"></td>
+                        <td th:text="${oee.availbility}"></td>
+                        <td th:text="${oee.quality}"></td>
+                        <td th:text="${oee.OEE}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

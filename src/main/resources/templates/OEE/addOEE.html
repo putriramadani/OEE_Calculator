@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      lang="en"
+      layout:decorate="~{layout/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Add OEE</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="card-header">
+        <h4 class="card-title">Tambah Data OEE</h4>
+    </div>
+    <div class="card-body">
+        <form th:action="@{/addOEE}" th:object="${OEEObject}" id="OEEForm" name="OEEForm" method="post">
+            <div class="row">
+                <div class="col-md-3 px-1">
+
+                    <div class="form-group">
+                        <label for="no_mesin">Machine</label>
+                        <select id="no_mesin" th:field="*{no_mesin}"
+                                th:class="'form-control '+ ${#fields.hasErrors('no_mesin') ? 'is-invalid' : ''}">
+                            <option value="">Choose Machine</option>
+                            <option th:each="mesin : ${listMesin}" th:value="${mesin.no_mesin}" th:text="${mesin.nama_mesin}"></option>
+                        </select>
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('no_mesin')}" th:errors="*{no_mesin}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="operator">Operator</label>
+                        <select id="operator" th:field="*{operator}"
+                                th:class="'form-control '+ ${#fields.hasErrors('operator') ? 'is-invalid' : ''}">
+                            <option value="">Choose Operator</option>
+                            <option th:each="operator : ${listKaryawan}" th:value="${operator.NIK}" th:text="${operator.nama_karyawan}"></option>
+                        </select>
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('operator')}" th:errors="*{operator}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shift">Shift</label>
+                        <input type="text" th:field="*{shift}" id="shift" placeholder="Shift"
+                               th:class="'form-control '+ ${#fields.hasErrors('shift') ? 'is-invalid' : ''}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('shift')}" th:errors="*{shift}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cycleTime">Cycle Time (Minutes)</label>
+                        <input type="text" th:field="*{cycleTime}" id="cycleTime" name="cycleTime" placeholder="Cycle Time"
+                               th:class="'form-control '+ ${#fields.hasErrors('cycleTime') ? 'is-invalid' : ''}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('cycleTime')}" th:errors="*{cycleTime}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="panjangShift">Shift Length (Minutes)</label>
+                        <input type="text" th:field="*{panjangShift}" id="panjangShift" name="panjangShift" placeholder="Shift Length"
+                               th:class="'form-control '+ ${#fields.hasErrors('panjangShift') ? 'is-invalid' : ''}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('panjangShift')}" th:errors="*{panjangShift}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="waktuBreakPendek">Short Break Time (Minutes)</label>
+                        <input type="text" th:field="*{waktuBreakPendek}" id="waktuBreakPendek" name="waktuBreakPendek" placeholder="Short Break Time"
+                               th:class="'form-control '+ ${#fields.hasErrors('waktuBreakPendek') ? 'is-invalid' : ''}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('waktuBreakPendek')}" th:errors="*{waktuBreakPendek}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="waktuBreakMakan">Meal Break Time (Minutes)</label>
+                        <input type="text" th:field="*{waktuBreakMakan}" id="waktuBreakMakan" name="waktuBreakMakan" placeholder="Meal Break Time"
+                               th:class="'form-control '+ ${#fields.hasErrors('waktuBreakMakan') ? 'is-invalid' : ''}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('waktuBreakMakan')}" th:errors="*{waktuBreakMakan}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="downtimeSetup">Downtime Setup (Minutes)</label>
+                        <input type="text" th:field="*{downtimeSetup}" id="downtimeSetup" name="downtimeSetup" placeholder="Downtime Setup"
+                               th:class="'form-control '+ ${#fields.hasErrors('downtimeSetup') ? 'is-invalid' : ''}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('downtimeSetup')}" th:errors="*{downtimeSetup}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="downtimeBreakdown">Downtime Breakdown (Minutes)</label>
+                        <input type="text" th:field="*{downtimeBreakdown}" id="downtimeBreakdown" name="downtimeBreakdown" onkeypress="OnChange(this.value)" placeholder="Downtime Breakdown"
+                               th:class="'form-control '+ ${#fields.hasErrors('downtimeBreakdown') ? 'is-invalid' : ''}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('downtimeBreakdown')}" th:errors="*{downtimeBreakdown}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="totalProduksiShift">Total Production</label>
+                        <input type="text" th:field="*{totalProduksiShift}" id="totalProduksiShift" name="totalProduksiShift" placeholder="Total Production"
+                               th:class="'form-control '+ ${#fields.hasErrors('totalProduksiShift') ? 'is-invalid' : ''}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('totalProduksiShift')}" th:errors="*{totalProduksiShift}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="totalProduksiReject">Total Reject</label>
+                        <input type="text" th:field="*{totalProduksiReject}" id="totalProduksiReject" name="totalProduksiReject" onkeypress="OnChange(this.value)" placeholder="Total Reject"
+                               th:class="'form-control '+ ${#fields.hasErrors('totalProduksiReject') ? 'is-invalid' : ''}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('totalProduksiReject')}" th:errors="*{totalProduksiReject}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="performance">Performance</label>
+                        <input type="text" th:field="*{performance}" id="performance" name="performance" placeholder="Performance"
+                               th:class="'form-control '+ ${#fields.hasErrors('performance') ? 'is-invalid' : ''}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('performance')}" th:errors="*{performance}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="availbility">Availbility</label>
+                        <input type="text" th:field="*{availbility}" id="availbility" name="availbility" placeholder="Availbility"
+                               th:class="'form-control '+ ${#fields.hasErrors('availbility') ? 'is-invalid' : ''}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('availbility')}" th:errors="*{availbility}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quality">Quality</label>
+                        <input type="text" th:field="*{quality}" id="quality" name="quality" placeholder="Quality"
+                               th:class="'form-control '+ ${#fields.hasErrors('quality') ? 'is-invalid' : ''}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('quality')}" th:errors="*{quality}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="OEE">OEE</label>
+                        <input type="text" th:field="*{OEE}" id="OEE" name="OEE" placeholder="OEE"
+                               th:class="'form-control '+ ${#fields.hasErrors('OEE') ? 'is-invalid' : ''}">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('OEE')}" th:errors="*{OEE}"></div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 px-1">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info btn-fill pull-right">Simpan</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" language="Javascript">
+    shifLength = document.OEEForm.panjangShift.value;
+    cycleTime = document.OEEForm.cycleTime.value;
+    shortBreak = document.OEEForm.waktuBreakPendek.value;
+    mealBreak = document.OEEForm.waktuBreakMakan.value;
+    downSetUp = document.OEEForm.downtimeSetup.value;
+    breakDown = document.OEEForm.downtimeBreakdown.value;
+    totalProduksi = document.OEEForm.totalProduksiShift.value;
+    rejectProduksi = document.OEEForm.totalProduksiReject.value;
+    function OnChange(value){
+        av = shifLength - (shortBreak + mealBreak + downSetUp + breakDown);
+        avail = (av / shifLength);
+        per = totalProduksi / (av * cycleTime);
+        qty = (totalProduksi - rejectProduksi) / totalProduksi;
+        o = avail * per * qty * 100;
+        document.OEEForm.availbility.value = avail * 100;
+        document.OEEForm.performance.value = per * 100;
+        document.OEEForm.quality.value = qty * 100;
+        document.OEEForm.OEE.value = o;
+    }
+</script>

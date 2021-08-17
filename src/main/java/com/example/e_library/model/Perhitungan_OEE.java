@@ -17,6 +17,9 @@ public class Perhitungan_OEE {
     private Mesin mesin;
     private Integer no_mesin;
 
+    @ManyToOne
+    @JoinColumn(name = "operator", nullable = false, insertable = false, updatable = false)
+    private Karyawan karyawan;
     private String operator;
 
     private Date tanggal;
@@ -41,7 +44,6 @@ public class Perhitungan_OEE {
 
     private Integer performance;
 
-
     private Integer availbility;
 
     private Integer quality;
@@ -58,10 +60,6 @@ public class Perhitungan_OEE {
 
     public void setIdPerhitunganOEE(Integer idPerhitunganOEE) {
         this.idPerhitunganOEE = idPerhitunganOEE;
-    }
-
-    public Mesin getMesin() {
-        return mesin;
     }
 
     public void setMesin(Mesin mesin) {
@@ -210,5 +208,17 @@ public class Perhitungan_OEE {
 
     public void setCreadate(Date creadate) {
         this.creadate = creadate;
+    }
+
+    public Karyawan getKaryawan() {
+        return karyawan;
+    }
+
+    public void setKaryawan(Karyawan karyawan) {
+        this.karyawan = karyawan;
+    }
+
+    public String getMesin(){
+        return mesin.getNama_mesin();
     }
 }
