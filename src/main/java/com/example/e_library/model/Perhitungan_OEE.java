@@ -42,13 +42,13 @@ public class Perhitungan_OEE {
 
     private Integer totalProduksiReject;
 
-    private Integer performance;
+    private float performance;
 
-    private Integer availbility;
+    private float availbility;
 
-    private Integer quality;
+    private float quality;
 
-    private Integer OEE;
+    private float OEE;
 
     private String creaby;
 
@@ -72,10 +72,6 @@ public class Perhitungan_OEE {
 
     public void setNo_mesin(Integer no_mesin) {
         this.no_mesin = no_mesin;
-    }
-
-    public String getOperator() {
-        return operator;
     }
 
     public void setOperator(String operator) {
@@ -110,11 +106,11 @@ public class Perhitungan_OEE {
         return panjangShift;
     }
 
-    public Integer getAvailbility() {
+    public float getAvailbility() {
         return availbility;
     }
 
-    public void setAvailbility(Integer availbility) {
+    public void setAvailbility(float availbility) {
         this.availbility = availbility;
     }
 
@@ -170,27 +166,27 @@ public class Perhitungan_OEE {
         this.totalProduksiReject = totalProduksiReject;
     }
 
-    public Integer getPerformance() {
+    public float getPerformance() {
         return performance;
     }
 
-    public void setPerformance(Integer performance) {
+    public void setPerformance(float performance) {
         this.performance = performance;
     }
 
-    public Integer getQuality() {
+    public float getQuality() {
         return quality;
     }
 
-    public void setQuality(Integer quality) {
+    public void setQuality(float quality) {
         this.quality = quality;
     }
 
-    public Integer getOEE() {
+    public float getOEE() {
         return OEE;
     }
 
-    public void setOEE(Integer OEE) {
+    public void setOEE(float OEE) {
         this.OEE = OEE;
     }
 
@@ -220,5 +216,8 @@ public class Perhitungan_OEE {
 
     public String getMesin(){
         return mesin.getNama_mesin();
+    }
+    public String getOperator(){
+        return karyawan.getNama_karyawan();
     }
 }

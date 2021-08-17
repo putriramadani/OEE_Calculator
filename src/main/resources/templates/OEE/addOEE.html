@@ -45,56 +45,56 @@
 
                     <div class="form-group">
                         <label for="cycleTime">Cycle Time (Minutes)</label>
-                        <input type="text" th:field="*{cycleTime}" id="cycleTime" name="cycleTime" placeholder="Cycle Time"
+                        <input type="text" th:field="*{cycleTime}" id="cycleTime" name="cycleTime"  placeholder="Cycle Time"
                                th:class="'form-control '+ ${#fields.hasErrors('cycleTime') ? 'is-invalid' : ''}">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('cycleTime')}" th:errors="*{cycleTime}"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="panjangShift">Shift Length (Minutes)</label>
-                        <input type="text" th:field="*{panjangShift}" id="panjangShift" name="panjangShift" placeholder="Shift Length"
+                        <input type="text" th:field="*{panjangShift}" id="panjangShift" name="panjangShift"  placeholder="Shift Length"
                                th:class="'form-control '+ ${#fields.hasErrors('panjangShift') ? 'is-invalid' : ''}">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('panjangShift')}" th:errors="*{panjangShift}"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="waktuBreakPendek">Short Break Time (Minutes)</label>
-                        <input type="text" th:field="*{waktuBreakPendek}" id="waktuBreakPendek" name="waktuBreakPendek" placeholder="Short Break Time"
+                        <input type="text" th:field="*{waktuBreakPendek}" id="waktuBreakPendek" name="waktuBreakPendek"  placeholder="Short Break Time"
                                th:class="'form-control '+ ${#fields.hasErrors('waktuBreakPendek') ? 'is-invalid' : ''}">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('waktuBreakPendek')}" th:errors="*{waktuBreakPendek}"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="waktuBreakMakan">Meal Break Time (Minutes)</label>
-                        <input type="text" th:field="*{waktuBreakMakan}" id="waktuBreakMakan" name="waktuBreakMakan" placeholder="Meal Break Time"
+                        <input type="text" th:field="*{waktuBreakMakan}" id="waktuBreakMakan" name="waktuBreakMakan"  placeholder="Meal Break Time"
                                th:class="'form-control '+ ${#fields.hasErrors('waktuBreakMakan') ? 'is-invalid' : ''}">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('waktuBreakMakan')}" th:errors="*{waktuBreakMakan}"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="downtimeSetup">Downtime Setup (Minutes)</label>
-                        <input type="text" th:field="*{downtimeSetup}" id="downtimeSetup" name="downtimeSetup" placeholder="Downtime Setup"
+                        <input type="text" th:field="*{downtimeSetup}" id="downtimeSetup" name="downtimeSetup"  placeholder="Downtime Setup"
                                th:class="'form-control '+ ${#fields.hasErrors('downtimeSetup') ? 'is-invalid' : ''}">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('downtimeSetup')}" th:errors="*{downtimeSetup}"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="downtimeBreakdown">Downtime Breakdown (Minutes)</label>
-                        <input type="text" th:field="*{downtimeBreakdown}" id="downtimeBreakdown" name="downtimeBreakdown" onkeypress="OnChange(this.value)" placeholder="Downtime Breakdown"
+                        <input type="text" th:field="*{downtimeBreakdown}" id="downtimeBreakdown" name="downtimeBreakdown"  placeholder="Downtime Breakdown"
                                th:class="'form-control '+ ${#fields.hasErrors('downtimeBreakdown') ? 'is-invalid' : ''}">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('downtimeBreakdown')}" th:errors="*{downtimeBreakdown}"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="totalProduksiShift">Total Production</label>
-                        <input type="text" th:field="*{totalProduksiShift}" id="totalProduksiShift" name="totalProduksiShift" placeholder="Total Production"
+                        <input type="text" th:field="*{totalProduksiShift}" id="totalProduksiShift" name="totalProduksiShift"  placeholder="Total Production"
                                th:class="'form-control '+ ${#fields.hasErrors('totalProduksiShift') ? 'is-invalid' : ''}">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('totalProduksiShift')}" th:errors="*{totalProduksiShift}"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="totalProduksiReject">Total Reject</label>
-                        <input type="text" th:field="*{totalProduksiReject}" id="totalProduksiReject" name="totalProduksiReject" onkeypress="OnChange(this.value)" placeholder="Total Reject"
+                        <input type="text" th:field="*{totalProduksiReject}" id="totalProduksiReject" name="totalProduksiReject" onkeyup="OnChange()" placeholder="Total Reject"
                                th:class="'form-control '+ ${#fields.hasErrors('totalProduksiReject') ? 'is-invalid' : ''}">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('totalProduksiReject')}" th:errors="*{totalProduksiReject}"></div>
                     </div>
@@ -145,23 +145,26 @@
 </body>
 </html>
 <script type="text/javascript" language="Javascript">
-    shifLength = document.OEEForm.panjangShift.value;
-    cycleTime = document.OEEForm.cycleTime.value;
-    shortBreak = document.OEEForm.waktuBreakPendek.value;
-    mealBreak = document.OEEForm.waktuBreakMakan.value;
-    downSetUp = document.OEEForm.downtimeSetup.value;
-    breakDown = document.OEEForm.downtimeBreakdown.value;
-    totalProduksi = document.OEEForm.totalProduksiShift.value;
-    rejectProduksi = document.OEEForm.totalProduksiReject.value;
-    function OnChange(value){
-        av = shifLength - (shortBreak + mealBreak + downSetUp + breakDown);
-        avail = (av / shifLength);
-        per = totalProduksi / (av * cycleTime);
-        qty = (totalProduksi - rejectProduksi) / totalProduksi;
-        o = avail * per * qty * 100;
-        document.OEEForm.availbility.value = avail * 100;
-        document.OEEForm.performance.value = per * 100;
-        document.OEEForm.quality.value = qty * 100;
+    function OnChange(){
+        var shifLength = document.OEEForm.panjangShift.value;
+        var cycleTime = document.OEEForm.cycleTime.value;
+        var shortBreak = document.OEEForm.waktuBreakPendek.value;
+        var mealBreak = document.OEEForm.waktuBreakMakan.value;
+        var downSetUp = document.OEEForm.downtimeSetup.value;
+        var breakDown = document.OEEForm.downtimeBreakdown.value;
+        var totalProduksi = document.OEEForm.totalProduksiShift.value;
+        var rejectProduksi = document.OEEForm.totalProduksiReject.value;
+        var av = shifLength - shortBreak - mealBreak - downSetUp - breakDown;
+        var avail = av / shifLength;
+        var per = totalProduksi / (av * cycleTime);
+        var qty = (totalProduksi - rejectProduksi) / totalProduksi;
+        var o = avail * per * qty * 100;
+        var avail1 = avail * 100;
+        var per1 = per * 100;
+        var qty1 = qty * 100;
+        document.OEEForm.availbility.value = avail1;
+        document.OEEForm.performance.value = per1;
+        document.OEEForm.quality.value = qty1;
         document.OEEForm.OEE.value = o;
     }
 </script>

@@ -30,6 +30,14 @@
                     <tr>
                         <td>No</td>
                         <td>Machine</td>
+                        <td>Operator</td>
+                        <td>Shift Length</td>
+                        <td>Short Break</td>
+                        <td>Meal Break</td>
+                        <td>Downtime Setup</td>
+                        <td>Breakdown Time</td>
+                        <td>Total Production</td>
+                        <td>Reject Product</td>
                         <td>Performance</td>
                         <td>Availibility</td>
                         <td>Quality</td>
@@ -40,6 +48,14 @@
                     <tr th:each="oee, counter: ${listOEE}">
                         <th th:text="${counter.count}"></th>
                         <td th:text="${oee.getMesin()}"></td>
+                        <td th:text="${oee.getOperator()}"></td>
+                        <td th:text="${oee.panjangShift}"></td>
+                        <td th:text="${oee.waktuBreakPendek}"></td>
+                        <td th:text="${oee.waktuBreakMakan}"></td>
+                        <td th:text="${oee.downtimeSetup}"></td>
+                        <td th:text="${oee.downtimeBreakdown}"></td>
+                        <td th:text="${oee.totalProduksiShift}"></td>
+                        <td th:text="${oee.totalProduksiReject}"></td>
                         <td th:text="${oee.performance}"></td>
                         <td th:text="${oee.availbility}"></td>
                         <td th:text="${oee.quality}"></td>
