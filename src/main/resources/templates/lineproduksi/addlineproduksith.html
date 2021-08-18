@@ -18,7 +18,7 @@
                             <div class="form-group">
                                 <label>Nama Line Produksi</label>
 
-                                <input type="text" th:field="*{nama_line}" id="nama_line" placeholder="Masukkan Nama Line"
+                                <input type="text" th:field="*{nama_line}" id="nama_line" placeholder="Masukkan Nama Line" required="true"
                                        th:class="'form-control '+ ${#fields.hasErrors('nama_line') ? 'is-invalid' : ''}">
                                 <div class="invalid-feedback" th:if="${#fields.hasErrors('nama_line')}" th:errors="*{nama_line}"></div>
                             </div>
