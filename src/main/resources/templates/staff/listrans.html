@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/staff}">
+
+<div layout:fragment="content">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Filter Transaksi</h6>
+        </div>
+        <div class="card-body">
+            <form action="/staff/listperhitunganoeebydate" method="post">
+                <div class="row">
+                    <label for="tglAwal" style="margin-right: 10px; padding-top: 5px" >Tanggal Awal</label>
+                    <input type="date" name="tglAwal" id="tglAwal" required pattern="yyyy-MM-dd">
+                    <p style="padding-top: 6px; margin-right: 20px; margin-left: 20px">&nbsp;-&nbsp;</p>
+                    <label for="tglAkhir" style="margin-right: 10px; padding-top: 5px">Tanggal Akhir</label>
+                    <input type="date" name="tglAkhir" id="tglAkhir" required pattern="yyyy-MM-dd">
+                    <button class="btn btn-primary" style="margin-left: 10px" type="submit">Cari</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+        <div class="card-body">
+            <div>
+                <div class="dataTables_wrapper">
+
+                    <table class="table table-bordered dataTable" width="100%">
+                        <thead>
+                        <tr>
+                            <td>No</td>
+                            <td>No Mesin</td>
+                            <td>Tanggal</td>
+                            <td>Operator</td>
+                            <td>Shift</td>
+                            <td>OEE</td>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="transoee, iterator: ${listPerhitunganOEE}">
+                            <td th:text="${iterator.count}">No</td>
+                            <td th:text="${transoee.no_mesin}"></td>
+
+                            <td th:text="${#dates.format(transoee.creadate, 'dd-MMM-yyyy')}"></td>
+                            <td th:text="${transoee.operator}"></td>
+                            <td th:text="${transoee.shift}"></td>
+                            <td th:text="${transoee.OEE}"></td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>
